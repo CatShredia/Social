@@ -12,6 +12,7 @@
                         <h5 class="mb-1">{{ $post->title }}</h5>
                         <p class="mb-1">{{ \Illuminate\Support\Str::limit($post->content, 150) }}</p>
                         <small>Лайков: {{ $post->likes }}</small>
+                        <p class="mb-3">Категория: {{ $post->category->name }}</p>
                         <small class="text-muted d-block mt-2">Дата создания:
                             {{ $post->created_at->format('d-m-Y H:i') }}</small>
                         <div class="d-flex justify-content-between mt-2">

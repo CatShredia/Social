@@ -38,6 +38,21 @@
                     @enderror
                 </div>
 
+                <div class="mb-3">
+                    <label for="category_id" class="form-label">Категория</label>
+                    <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
+                        <option value="">Выберите категорию</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}" {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('category_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="is_published" name="is_published"
                         {{ old('is_published', $post->is_published) ? 'checked' : '' }}>
