@@ -36,8 +36,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('#button_test').addEventListener('click', function () {
+                console.log('pooper:');
                 console.log(window.Popper);
+                console.log('jquery:');
                 console.log(window.jQuery);
+                console.log('tailwind:');
+                console.log(window.tailwind);
             })
         })
     </script>

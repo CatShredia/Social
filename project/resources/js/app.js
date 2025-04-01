@@ -5,3 +5,6 @@ import $ from "jquery";
 window.$ = window.jQuery = $;
 
 import "bootstrap";
+
+import $tailwind from "tailwindcss";
+window.$ = window.tailwind = $tailwind;
