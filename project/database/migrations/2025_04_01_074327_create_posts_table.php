@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+
+            $table->string('title');
+            $table->text('content');
+            $table->boolean('is_published');
+            $table->unsignedInteger('likes');
+
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }
