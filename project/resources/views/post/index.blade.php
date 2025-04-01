@@ -15,7 +15,7 @@
                         <small class="text-muted d-block mt-2">Дата создания:
                             {{ $post->created_at->format('d-m-Y H:i') }}</small>
                         <div class="d-flex justify-content-between mt-2">
-                            <a href="#" class="btn btn-outline-primary">Читать далее</a>
+                            <a href="{{ route('post.show', $post) }}" class="btn btn-outline-primary">Читать далее</a>
                         </div>
                     </div>
                 @endforeach
