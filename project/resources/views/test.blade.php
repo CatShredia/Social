@@ -45,6 +45,8 @@
             })
         })
     </script>
+
+    <script src="{{ asset('public/tailwind.css') }}"></script>
 </body>
 
 </html>
