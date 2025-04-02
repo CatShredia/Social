@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
@@ -7,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/test', [MainController::class, 'test'])->name('test');
 
-
+// posts
 Route::group(['prefix' => 'post'], function () {
     // all posts
     Route::get('index', [PostController::class, 'index'])->name('post.index');
@@ -22,4 +23,10 @@ Route::group(['prefix' => 'post'], function () {
     // editing
     Route::get('{post}/edit', [PostController::class, 'edit'])->name('post.edit');
     Route::put('{post}/updating', [PostController::class, 'update'])->name('post.update');
+});
+
+// admin
+Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
+    // index
+    Route::get('', [AdminIndexController::class, 'index'])->name('admin.index');
 });
