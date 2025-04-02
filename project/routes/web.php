@@ -7,10 +7,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/test', [MainController::class, 'test'])->name('test');
 
-Route::group(['namespace' => 'post', 'prefix' => 'post'], function () {
-    Route::get('/index', [PostController::class, 'index'])->name('post.index');
-    Route::get('/{post}', [PostController::class, 'show'])->name('post.show');
 
-    Route::get('/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
-    Route::put('/{post}/updating', [PostController::class, 'update'])->name('post.update');
+Route::group(['prefix' => 'post'], function () {
+    // all posts
+    Route::get('index', [PostController::class, 'index'])->name('post.index');
+
+    // creating
+    Route::get('create', [PostController::class, 'create'])->name('post.create');
+    Route::post('store', [PostController::class, 'store'])->name('post.store');
+
+    // show one
+    Route::get('{post}', [PostController::class, 'show'])->name('post.show');
+
+    // editing
+    Route::get('{post}/edit', [PostController::class, 'edit'])->name('post.edit');
+    Route::put('{post}/updating', [PostController::class, 'update'])->name('post.update');
 });

@@ -6,6 +6,10 @@
         <div class="container mt-2">
             <h1>Список постов</h1>
 
+            <div class="mb-3">
+                <a href="{{ route('post.create') }}" class="btn btn-success">Создать новый пост</a>
+            </div>
+
             <div class="list-group">
                 @foreach ($posts as $post)
                     <div class="list-group-item">

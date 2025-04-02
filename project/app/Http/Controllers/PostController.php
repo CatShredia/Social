@@ -32,15 +32,21 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('post.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $this->postService->store($data);
+
+        return redirect(route('post.index'))->with('success', 'Post was Created!');
     }
 
     /**
@@ -70,7 +76,7 @@ class PostController extends Controller
 
         $this->postService->update($data, $post);
 
-        return redirect(route('post.index'))->with('success', 'Post was Created!');
+        return redirect(route('post.index'))->with('success', 'Post was Editing!');
     }
 
     /**

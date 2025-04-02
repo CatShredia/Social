@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->text('content');
-            $table->boolean('is_published');
+            $table->boolean('is_published')->default(false);
             $table->unsignedInteger('likes');
 
             $table->softDeletes();
