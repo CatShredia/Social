@@ -26,6 +26,8 @@ class PostRequest extends FormRequest
             'content' => 'required|string',
             'likes' => 'required|integer',
             'category_id' => 'required|integer',
+            'tags' => ['nullable', 'array'],
+            'tags.*' => ['exists:tags,id'],
         ];
     }
 }

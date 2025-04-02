@@ -17,6 +17,18 @@
                         <p class="mb-1">{{ \Illuminate\Support\Str::limit($post->content, 150) }}</p>
                         <small>Лайков: {{ $post->likes }}</small>
                         <p class="mb-3">Категория: {{ $post->category->name }}</p>
+
+                        <p class="mb-1">Теги:</p>
+                        @if($post->tags->isNotEmpty())
+                            <ul>
+                                @foreach($post->tags as $tag)
+                                    <li>{{ $tag->name }}</li>
+                                @endforeach
+                            </ul>
+                        @else
+                            <p>Нет тегов</p>
+                        @endif
+
                         <small class="text-muted d-block mt-2">Дата создания:
                             {{ $post->created_at->format('d-m-Y H:i') }}</small>
                         <div class="d-flex justify-content-between mt-2">

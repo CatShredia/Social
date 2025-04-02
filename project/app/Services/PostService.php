@@ -6,23 +6,27 @@ use App\Models\Post;
 
 class PostService
 {
-    public function store($data)
+    public function store($data): Post
     {
-        // $tags = $data['tag_ids'];
-        // unset($data['tag_ids']);
+        $tags = $data['tags'];
+        unset($data['tags']);
 
         $post = Post::create($data);
 
-        // $post->tags()->attach($tags);
+        $post->tags()->attach($tags);
+
+        return $post;
     }
 
-    public function update($data, $post)
+    public function update($data, $post): Post
     {
-        // $tags = $data['tag_ids'];
-        // unset($data['tag_ids']);
+        $tags = $data['tags'];
+        unset($data['tags']);
 
 
         $post->update($data);
-        // $post->tags()->sync($tags);
+        $post->tags()->sync($tags);
+
+        return $post;
     }
 }

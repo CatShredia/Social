@@ -53,6 +53,20 @@
                     @enderror
                 </div>
 
+                <div class="mb-3">
+                    <label for="tags" class="form-label">Теги</label>
+                    <select class="form-control @error('tags') is-invalid @enderror" id="tags" name="tags[]" multiple>
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag->id }}" {{ in_array($tag->id, old('tags', $post->tags->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                {{ $tag->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('tags')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="is_published" name="is_published"
                         {{ old('is_published', $post->is_published) ? 'checked' : '' }}>

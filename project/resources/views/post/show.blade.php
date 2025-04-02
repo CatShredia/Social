@@ -11,6 +11,17 @@
                 <p class="mb-3">Категория: {{ $post->category->name }}</p>
                 <p><strong>Лайков:</strong> {{ $post->likes }}</p>
 
+                <p class="mb-1">Теги:</p>
+                @if($post->tags->isNotEmpty())
+                    <ul>
+                        @foreach($post->tags as $tag)
+                            <li>{{ $tag->name }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p>Нет тегов</p>
+                @endif
+
                 <a href="{{ route('post.edit', $post->id) }}" class="btn btn-outline-warning">Редактировать пост</a>
 
                 <a href="{{ route('post.index') }}" class="btn btn-outline-secondary">Назад к списку</a>

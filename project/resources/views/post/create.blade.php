@@ -3,7 +3,7 @@
 @section('content')
     @include('includes.header')
     <main class="main">
-        <div class="container mt-5">
+        <div class="container mt-2">
             <h1>Создать новый пост</h1>
 
             <!-- Форма создания поста -->
@@ -48,6 +48,20 @@
                         @endforeach
                     </select>
                     @error('category_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="tags" class="form-label">Теги</label>
+                    <select class="form-control @error('tags') is-invalid @enderror" id="tags" name="tags[]" multiple>
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag->id }}" {{ in_array($tag->id, old('tags', [])) ? 'selected' : '' }}>
+                                {{ $tag->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('tags')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
