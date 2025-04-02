@@ -8,24 +8,32 @@ class PostService
 {
     public function store($data): Post
     {
-        $tags = $data['tags'];
+        $tags = $data['tags'] ?? null;
         unset($data['tags']);
 
         $post = Post::create($data);
 
-        $post->tags()->attach($tags);
+        if (!is_null($tags)) {
+            $post->tags()->attach($tags);
+        } else {
+            $post->tags()->detach();
+        }
 
         return $post;
     }
 
     public function update($data, $post): Post
     {
-        $tags = $data['tags'];
+        $tags = $data['tags'] ?? null;
         unset($data['tags']);
 
-
         $post->update($data);
-        $post->tags()->sync($tags);
+
+        if (!is_null($tags)) {
+            $post->tags()->sync($tags);
+        } else {
+            $post->tags()->detach();
+        }
 
         return $post;
     }

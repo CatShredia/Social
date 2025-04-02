@@ -5,6 +5,11 @@
 </head>
 
 <body class="container" style="padding: 10px">
+    <a href="#" class="text-black me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+    <a href="#" class="text-black me-3"><i class="fab fa-twitter fa-lg"></i></a>
+    <a href="#" class="text-black me-3"><i class="fab fa-instagram fa-lg"></i></a>
+    <a href="#" class="text-black me-3"><i class="fab fa-linkedin-in fa-lg"></i></a>
+    <a href="#" class="text-black"><i class="fab fa-youtube fa-lg"></i></a>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
