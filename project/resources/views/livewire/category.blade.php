@@ -11,14 +11,48 @@
                 <th>Deleted_at</th>
                 <th>Created_at</th>
                 <th>Updated_at</th>
-                <th>Delete</th>
+                <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>0</td>
+                <td>
+                    @if($creating)
+                        <form wire:submit="save">
+                            <input type="text" class="form-control" wire:model="creatingName">
+                            <button type="submit" class="btn btn-primary mt-2" wire:click="create">Save</button>
+                            <button type="button" class="btn btn-secondary mt-2" wire:click="cancelCreating">Cancel</button>
+                        </form>
+                    @else
+                        {{-- Placeholder for the name when not creating --}}
+                    @endif
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    @if(!$creating)
+                        <button style="background-color: rgb(38, 154, 32); color: white;" class="btn"
+                            wire:click="startCreating">Create</button>
+                    @endif
+                </td>
+            </tr>
             @foreach ($categories as $category)
                 <tr>
                     <td>{{ $category->id }}</td>
-                    <td>{{ $category->name }}</td>
+                    <td>
+                        @if($editingId === $category->id)
+                            <form wire:submit="save({{ $category->id }})">
+                                <input type="text" class="form-control" wire:model="editingName">
+                                <button type="submit" class="btn btn-primary mt-2">Update</button>
+                                <button type="button" class="btn btn-secondary mt-2" wire:click="cancelEditing">Cancel</button>
+                            </form>
+                        @else
+                            {{ $category->name }}
+                        @endif
+                    </td>
                     <td>
                         @if ($category->deleted_at === null)
                             Not deleted
@@ -33,6 +67,11 @@
                             <button class="btn btn-danger" wire:click="delete({{ $category->id }})">Delete</button>
                         @else
                             <button class="btn btn-success" wire:click="recover({{ $category->id }})">Recover</button>
+                        @endif
+                    </td>
+                    <td>
+                        @if($editingId !== $category->id)
+                            <button class="btn btn-success" wire:click="startEditing    ({{ $category->id }})">Edit</button>
                         @endif
                     </td>
                 </tr>
