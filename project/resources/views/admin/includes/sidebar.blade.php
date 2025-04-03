@@ -38,8 +38,8 @@
                 <li class="nav-header">Objects</li>
 
                 <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
-                        <i class="nav-icon far fa-calendar-alt"></i>
+                    <a href="{{ route('admin.category') }}" class="nav-link">
+                        <i class="fa-solid fa-table"></i>
                         <p>
                             Categories
                             <span class="badge badge-info right">2</span>

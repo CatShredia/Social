@@ -10,6 +10,9 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="{{ route('post.index') }}">Posts</a>
                 </div>
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="{{ route('admin.index') }}">Admin</a>
+                </div>
             </div>
         </div>
     </nav>

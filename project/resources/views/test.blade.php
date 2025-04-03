@@ -52,6 +52,11 @@
     </script>
 
     <script src="{{ asset('public/tailwind.css') }}"></script>
+
+    <h1>Livewire counter:</h1>
+    @livewire('counter')
+
+    @livewireScripts
 </body>
 
 </html>
