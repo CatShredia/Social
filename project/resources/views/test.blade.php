@@ -2,6 +2,7 @@
 
 <head>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/mytailwind.css']) --}}
 </head>
 
 <body class="container" style="padding: 10px">
@@ -50,8 +51,6 @@
             })
         })
     </script>
-
-    <script src="{{ asset('public/tailwind.css') }}"></script>
 
     <h1>Livewire counter:</h1>
     @livewire('counter')
