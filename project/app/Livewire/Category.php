@@ -7,9 +7,17 @@ use App\Models\Category as CategoryModel;
 
 class Category extends Component
 {
+    public $search = '';
+
     public function render()
     {
-        $categories = CategoryModel::withTrashed()->get();
+        $query = CategoryModel::withTrashed();
+
+        if ($this->search) {
+            $query->where('name', 'like', '%' . $this->search . '%');
+        }
+
+        $categories = $query->get();
 
         return view('livewire.category', compact('categories'));
     }

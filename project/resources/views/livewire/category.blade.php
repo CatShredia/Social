@@ -1,4 +1,8 @@
 <div>
+    <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Search categories..."
+            wire:model.live.debounce.300ms="search">
+    </div>
     <table class="table table-hover text-nowrap">
         <thead>
             <tr>
@@ -7,7 +11,7 @@
                 <th>Deleted_at</th>
                 <th>Created_at</th>
                 <th>Updated_at</th>
-                <th>Actions</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
