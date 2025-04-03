@@ -20,7 +20,6 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->name(),
             'content' => $this->faker->text(100),
-            'is_published' => random_int(0, 1),
             'likes' => random_int(1, 10000),
             'category_id' => Category::get()->random()->id
         ];

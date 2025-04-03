@@ -1,5 +1,6 @@
 # Social
 
-## task
+## tasks
 
-repaire tailwind css in test
+1. need add auth
+2. need images

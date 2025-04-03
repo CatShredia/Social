@@ -22,8 +22,8 @@
 
                 <div class="mb-3">
                     <label for="content" class="form-label">Контент</label>
-                    <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="5"
-                    >{{ old('content', $post->content) }}</textarea>
+                    <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content"
+                        rows="5">{{ old('content', $post->content) }}</textarea>
                     @error('content')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -40,7 +40,8 @@
 
                 <div class="mb-3">
                     <label for="category_id" class="form-label">Категория</label>
-                    <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
+                    <select class="form-control @error('category_id') is-invalid @enderror" id="category_id"
+                        name="category_id">
                         <option value="">Выберите категорию</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>
@@ -65,12 +66,6 @@
                     @error('tags')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
-
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="is_published" name="is_published"
-                        {{ old('is_published', $post->is_published) ? 'checked' : '' }}>
-                    <label class="form-check-label" for="is_published">Опубликован</label>
                 </div>
 
                 <button type="submit" class="btn btn-primary mt-3">Сохранить изменения</button>
