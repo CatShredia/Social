@@ -5,8 +5,8 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{ asset('storage/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60"
-            width="60">
+        <img class="animation__shake" src="{{ asset('storage/admin/images/AdminLTELogo.png') }}" alt="AdminLTELogo"
+            height="60" width="60">
     </div>
 
     <!-- Navbar -->
@@ -59,7 +59,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="{{ asset('storage/img/user1-128x128.jpg') }}" alt="User Avatar"
+                            <img src="{{ asset('storage/admin/images/user1-128x128.jpg') }}" alt="User Avatar"
                                 class="img-size-50 mr-3 img-circle">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
@@ -76,7 +76,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="{{ asset('storage/img/user8-128x128') }}.jpg" alt="User Avatar"
+                            <img src="{{ asset('storage/admin/images/user8-128x128') }}.jpg" alt="User Avatar"
                                 class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
@@ -93,7 +93,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="{{ asset('storage/img/user3-128x128.jpg') }}" alt="User Avatar"
+                            <img src="{{ asset('storage/admin/images/user3-128x128.jpg') }}" alt="User Avatar"
                                 class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
@@ -156,7 +156,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
-            <img src="{{ asset('storage/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+            <img src="{{ asset('storage/admin/images/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                 class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">AdminLTE 3</span>
         </a>
@@ -166,7 +166,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset('storage/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                    <img src="{{ asset('storage/admin/images/user2-160x160.jpg') }}" class="img-circle elevation-2"
                         alt="User Image">
                 </div>
                 <div class="info">
@@ -986,7 +986,8 @@
                                             <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="{{ asset('storage/img/user1-128x128.jpg') }} "
+                                        <img class="direct-chat-img"
+                                            src="{{ asset('storage/admin/images/user1-128x128.jpg') }} "
                                             alt=" message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
@@ -1003,7 +1004,8 @@
                                             <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="{{ asset('storage/img/user3-128x128.jpg') }}"
+                                        <img class="direct-chat-img"
+                                            src="{{ asset('storage/admin/images/user3-128x128.jpg') }}"
                                             alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
@@ -1020,7 +1022,8 @@
                                             <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="{{ asset('storage/img/user1-128x128.jpg') }}"
+                                        <img class="direct-chat-img"
+                                            src="{{ asset('storage/admin/images/user1-128x128.jpg') }}"
                                             alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
@@ -1037,7 +1040,8 @@
                                             <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="{{ asset('storage/img/user3-128x128.jpg') }}"
+                                        <img class="direct-chat-img"
+                                            src="{{ asset('storage/admin/images/user3-128x128.jpg') }}"
                                             alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
@@ -1056,7 +1060,7 @@
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('storage/img/user1-128x128.jpg') }}" alt=" User
+                                                    src="{{ asset('storage/admin/images/user1-128x128.jpg') }}" alt=" User
                                                         Avatar">
 
                                                 <div class="contacts-list-info">
@@ -1074,7 +1078,7 @@
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('storage/img/user7-128x128.jpg') }}" alt=" User
+                                                    src="{{ asset('storage/admin/images/user7-128x128.jpg') }}" alt=" User
                                                         Avatar">
 
                                                 <div class="contacts-list-info">
@@ -1091,7 +1095,7 @@
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('storage/img/user3-128x128.jpg') }}" alt=" User
+                                                    src="{{ asset('storage/admin/images/user3-128x128.jpg') }}" alt=" User
                                                         Avatar">
 
                                                 <div class="contacts-list-info">
@@ -1108,7 +1112,7 @@
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('storage/img/user5-128x128.jpg') }}" alt=" User
+                                                    src="{{ asset('storage/admin/images/user5-128x128.jpg') }}" alt=" User
                                                         Avatar">
 
                                                 <div class="contacts-list-info">
@@ -1125,7 +1129,7 @@
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('storage/img/user6-128x128.jpg') }}" alt=" User
+                                                    src="{{ asset('storage/admin/images/user6-128x128.jpg') }}" alt=" User
                                                         Avatar">
 
                                                 <div class="contacts-list-info">
@@ -1142,7 +1146,7 @@
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('storage/img/user8-128x128.jpg') }}" alt=" User
+                                                    src="{{ asset('storage/admin/images/user8-128x128.jpg') }}" alt=" User
                                                         Avatar">
 
                                                 <div class="contacts-list-info">
