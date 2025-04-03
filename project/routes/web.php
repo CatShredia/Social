@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\TagController as AdminTagController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
@@ -31,4 +32,5 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     // index
     Route::get('', [AdminIndexController::class, 'index'])->name('admin.index');
     Route::get('/categories', [AdminCategoryController::class, 'index'])->name('admin.category');
+    Route::get('/tags', [AdminTagController::class, 'index'])->name('admin.tag');
 });

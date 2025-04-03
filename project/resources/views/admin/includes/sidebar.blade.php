@@ -46,6 +46,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.tag') }}" class="nav-link">
+                        <i class="fa-solid fa-list"></i>
+                        <p>
+                            Tags
+                            <span class="badge badge-info right">2</span>
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

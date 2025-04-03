@@ -1,7 +1,6 @@
 <div>
     <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Search categories..."
-            wire:model.live.debounce.300ms="search">
+        <input type="text" class="form-control" placeholder="Search tags..." wire:model.live.debounce.300ms="search">
     </div>
     <table class="table table-hover text-nowrap">
         <thead>
@@ -10,7 +9,7 @@
                 <th>Name</th>
                 <th>Deleted_at</th>
                 <th>Created_at</th>
-                <th>Updated_at</th>
+                <th> d_at</th>
                 <th>Actions</th>
                 <th></th>
             </tr>
@@ -39,39 +38,39 @@
                     @endif
                 </td>
             </tr>
-            @foreach ($categories as $category)
+            @foreach ($tags as $tag)
                 <tr>
-                    <td>{{ $category->id }}</td>
+                    <td>{{ $tag->id }}</td>
                     <td>
-                        @if($editingId === $category->id)
-                            <form wire:submit="save({{ $category->id }})">
+                        @if($editingId === $tag->id)
+                            <form wire:submit="save({{ $tag->id }})">
                                 <input type="text" class="form-control" wire:model="editingName">
                                 <button type="submit" class="btn btn-primary mt-2">Update</button>
                                 <button type="button" class="btn btn-secondary mt-2" wire:click="cancelEditing">Cancel</button>
                             </form>
                         @else
-                            {{ $category->name }}
+                            {{ $tag->name }}
                         @endif
                     </td>
                     <td>
-                        @if ($category->deleted_at === null)
+                        @if ($tag->deleted_at === null)
                             Not deleted
                         @else
-                            {{ $category->deleted_at }}
+                            {{ $tag->deleted_at }}
                         @endif
                     </td>
-                    <td>{{ $category->created_at }}</td>
-                    <td>{{ $category->updated_at }}</td>
+                    <td>{{ $tag->created_at }}</td>
+                    <td>{{ $tag->updated_at }}</td>
                     <td>
-                        @if ($category->deleted_at === null)
-                            <button class="btn btn-danger" wire:click="delete({{ $category->id }})">Delete</button>
+                        @if ($tag->deleted_at === null)
+                            <button class="btn btn-danger" wire:click="delete({{ $tag->id }})">Delete</button>
                         @else
-                            <button class="btn btn-success" wire:click="recover({{ $category->id }})">Recover</button>
+                            <button class="btn btn-success" wire:click="recover({{ $tag->id }})">Recover</button>
                         @endif
                     </td>
                     <td>
-                        @if($editingId !== $category->id)
-                            <button class="btn btn-success" wire:click="startEditing    ({{ $category->id }})">Edit</button>
+                        @if($editingId !== $tag->id)
+                            <button class="btn btn-success" wire:click="startEditing    ({{ $tag->id }})">Edit</button>
                         @endif
                     </td>
                 </tr>
