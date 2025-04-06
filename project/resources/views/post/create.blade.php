@@ -70,11 +70,16 @@
                 <!-- Поле для загрузки изображения -->
                 <div class="mb-3">
                     <label for="image_file" class="form-label">Изображение</label>
-                    <input type="file" class="form-control @error('image_file') is-invalid @enderror" id="image"
-                        name="image_file">
+                    <input type="file" class="form-control @error('image_file') is-invalid @enderror" id="image_file"
+                        name="image_file" onchange="previewImage(event)">
                     @error('image_file')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
+                </div>
+
+                <!-- Место для предварительного просмотра изображения -->
+                <div class="mb-3" id="image-preview-container" style="display:none;">
+                    <img id="image-preview" src="" alt="Предпросмотр изображения" class="img-fluid">
                 </div>
 
                 <button type="submit" class="btn btn-success mt-3">Создать пост</button>
@@ -82,4 +87,23 @@
         </div>
     </main>
     @include('includes.footer')
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                const imagePreview = document.getElementById('image-preview');
+                const previewContainer = document.getElementById('image-preview-container');
+                imagePreview.src = reader.result;
+                previewContainer.style.display = 'block';  // Показываем контейнер с изображением
+            };
+
+            if (file) {
+                reader.readAsDataURL(file); // Читаем файл как URL
+            }
+        }
+    </script>
+
 @endsection
