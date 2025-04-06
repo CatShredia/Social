@@ -23,8 +23,6 @@
                                     <div class="card-body table-responsive p-0">
                                         @livewire('category')
 
-                                        @livewireScripts
-
                                     </div>
                                     <!-- /.card-body -->
                                 </div>

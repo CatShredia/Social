@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CatShredia's dashboard</title>
 
+    @livewireScripts
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('storage/admin/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -16,7 +17,8 @@
     <!-- JQVMap -->
     <link rel="stylesheet" href="{{ asset('storage/admin/plugins/jqvmap/jqvmap.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('storage/admin/dist/css/adminlte.min.css') }}">
+    {{--
+    <link rel="stylesheet" href="{{ asset('storage/admin/dist/css/adminlte.min.css') }}"> --}}
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('storage/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
@@ -24,7 +26,7 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('storage/admin/plugins/summernote/summernote-bs4.min.css') }}">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/adminlte.css', 'resources/js/app.js', 'resources/js/adminlte.js'])
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -61,11 +63,14 @@
     <!-- overlayScrollbars -->
     <script src="{{ asset('storage/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('storage/admin/dist/js/adminlte.js') }}"></script>
+    {{--
+    <script src="{{ asset('storage/admin/dist/js/adminlte.js') }}"></script> --}}
     <!-- AdminLTE for demo purposes -->
-    <!-- <script src="dist/js/demo.js') }}"></script> -->
+    {{--
+    <script src="dist/js/demo.js') }}"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <!-- <script src="dist/js/pages/dashboard.js') }}"></script> -->
+    {{--
+    <script src="dist/js/pages/dashboard.js') }}"></script> --}}
 </body>
 
 </html>
