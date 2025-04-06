@@ -28,6 +28,13 @@ class PostRequest extends FormRequest
             'category_id' => 'required|integer',
             'tags' => ['nullable', 'array'],
             'tags.*' => ['exists:tags,id'],
+            'image_file' => 'nullable|mimes:jpeg,png,jpg,gif,svg,webp',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'image_file.mimes' => 'Изображение должно быть в одном из следующих форматов: jpeg, png, jpg, gif, svg, webp.',
         ];
     }
 }

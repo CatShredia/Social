@@ -13,6 +13,18 @@
             <div class="list-group">
                 @foreach ($posts as $post)
                     <div class="list-group-item">
+                        <div class="text-center">
+                            @if($post->image_storage_url)
+                                <img src="{{ asset('storage/posts/images/' . $post->image_storage_url) }}" alt="{{ $post->title }}"
+                                    class="img-fluid mb-2 rounded" style="max-height: 200px; width: auto;">
+                            @else
+                                <div class="mb-2"
+                                    style="height: 200px; display: flex; justify-content: center; align-items: center; background-color: #f0f0f0; color: #888;">
+                                    No Image
+                                </div>
+                            @endif
+                        </div>
+
                         <h5 class="mb-1">{{ $post->title }}</h5>
                         <p class="mb-1">{{ \Illuminate\Support\Str::limit($post->content, 150) }}</p>
                         <small>Лайков: {{ $post->likes }}</small>

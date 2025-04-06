@@ -6,8 +6,8 @@
         <div class="container mt-2">
             <h1>Создать новый пост</h1>
 
-            <!-- Форма создания поста -->
-            <form action="{{ route('post.store') }}" method="POST">
+            <!-- Форма создания поста с возможностью загрузки изображения -->
+            <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
@@ -63,6 +63,16 @@
                         @endforeach
                     </select>
                     @error('tags')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Поле для загрузки изображения -->
+                <div class="mb-3">
+                    <label for="image_file" class="form-label">Изображение</label>
+                    <input type="file" class="form-control @error('image_file') is-invalid @enderror" id="image"
+                        name="image_file">
+                    @error('image_file')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

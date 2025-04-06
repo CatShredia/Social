@@ -44,12 +44,33 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+        // Получаем валидированные данные
         $data = $request->validated();
 
+        // Проверка на наличие файла изображения
+        if ($request->hasFile('image_file')) {
+            $image = $request->file('image_file');
+
+            // Генерация уникального имени для файла
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+
+            // Сохранение изображения в папку public/images
+            $image->storeAs('posts/images', $imageName, 'public');
+
+            // Обновляем путь в данных, чтобы использовать 'image_storage_url'
+            $data['image_storage_url'] = $imageName;
+
+            // Удаляем старое поле 'image_file', если оно существует в данных
+            unset($data['image_file']);
+        }
+
+        // Сохраняем пост с данными, включая путь к изображению
         $post = $this->postService->store($data);
 
+        // Перенаправляем с сообщением об успешном создании поста
         return redirect(route('post.index'))->with('success', 'Post was Created!');
     }
+
 
     /**
      * Display the specified resource.
