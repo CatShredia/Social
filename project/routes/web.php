@@ -34,3 +34,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('/categories', [AdminCategoryController::class, 'index'])->name('admin.category');
     Route::get('/tags', [AdminTagController::class, 'index'])->name('admin.tag');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

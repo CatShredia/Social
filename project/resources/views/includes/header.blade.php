@@ -14,6 +14,19 @@
                     <a class="nav-link active" aria-current="page" href="{{ route('admin.index') }}">Admin</a>
                 </div>
             </div>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="justify-content: end">
+                <div class="navbar-nav">
+
+                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">
+                        @if(Auth::check())
+                            <img src="#" alt="icon of user">
+                            {{ Auth::user()->name }}
+                        @else
+                            <i class="fa-solid fa-circle-user" style="font-size: 2em"></i>
+                        @endif
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 </header>
