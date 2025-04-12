@@ -25,5 +25,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('view-admin-button', function ($user) {
             return $user->id === 1;
         });
+
+        Gate::define('admin-access', function (User $user) {
+            return $user->id === 1;
+        });
     }
 }

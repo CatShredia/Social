@@ -3,8 +3,10 @@
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\TagController as AdminTagController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
+use App\Http\Middleware\AdminAccess;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index'])->name('index');
@@ -28,7 +30,7 @@ Route::group(['prefix' => 'post'], function () {
 });
 
 // admin
-Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => [AdminAccess::class]], function () {
     // index
     Route::get('', [AdminIndexController::class, 'index'])->name('admin.index');
     Route::get('/categories', [AdminCategoryController::class, 'index'])->name('admin.category');
@@ -37,4 +39,6 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/access', [MainController::class, 'accessDenied'])->name('accessDenied');
