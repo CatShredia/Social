@@ -1,7 +1,6 @@
 @extends('layouts.default')
 
 @section('content')
-    @include('includes.header')
     <main class="main">
         <div class="container mt-2">
             <h1>Список постов</h1>
@@ -51,5 +50,4 @@
             </div>
         </div>
     </main>
-    @include('includes.footer')
 @endsection
