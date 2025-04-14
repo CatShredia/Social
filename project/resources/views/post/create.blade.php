@@ -6,8 +6,8 @@
         <div class="container mt-2">
             <h1>Создать новый пост</h1>
 
-            <!-- Форма создания поста -->
-            <form action="{{ route('post.store') }}" method="POST">
+            <!-- Форма создания поста с возможностью загрузки изображения -->
+            <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
@@ -67,9 +67,43 @@
                     @enderror
                 </div>
 
+                <!-- Поле для загрузки изображения -->
+                <div class="mb-3">
+                    <label for="image_file" class="form-label">Изображение</label>
+                    <input type="file" class="form-control @error('image_file') is-invalid @enderror" id="image_file"
+                        name="image_file" onchange="previewImage(event)">
+                    @error('image_file')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Место для предварительного просмотра изображения -->
+                <div class="mb-3" id="image-preview-container" style="display:none;">
+                    <img id="image-preview" src="" alt="Предпросмотр изображения" class="img-fluid">
+                </div>
+
                 <button type="submit" class="btn btn-success mt-3">Создать пост</button>
             </form>
         </div>
     </main>
     @include('includes.footer')
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                const imagePreview = document.getElementById('image-preview');
+                const previewContainer = document.getElementById('image-preview-container');
+                imagePreview.src = reader.result;
+                previewContainer.style.display = 'block';  // Показываем контейнер с изображением
+            };
+
+            if (file) {
+                reader.readAsDataURL(file); // Читаем файл как URL
+            }
+        }
+    </script>
+
 @endsection

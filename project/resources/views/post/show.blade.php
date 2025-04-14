@@ -5,6 +5,17 @@
     <main class="main">
         <div class="container mt-5">
             <div class="post">
+                <div class="text-center">
+                    @if($post->image_storage_url)
+                        <img src="{{ asset('storage/posts/images/' . $post->image_storage_url) }}" alt="{{ $post->title }}"
+                            class="img-fluid mb-2 rounded" style="max-height: 200px; width: auto;">
+                    @else
+                        <div class="mb-2"
+                            style="height: 200px; display: flex; justify-content: center; align-items: center; background-color: #f0f0f0; color: #888;">
+                            No Image
+                        </div>
+                    @endif
+                </div>
                 <h1>{{ $post->title }}</h1>
                 <p class="text-muted">Дата создания: {{ $post->created_at->format('d-m-Y H:i') }}</p>
                 <p class="mb-3">{{ $post->content }}</p>

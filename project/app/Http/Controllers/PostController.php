@@ -46,10 +46,19 @@ class PostController extends Controller
     {
         $data = $request->validated();
 
+        if ($request->hasFile('image_file')) {
+            $imageName = $this->postService->setImage($request);
+
+            $data['image_storage_url'] = $imageName;
+
+            unset($data['image_file']);
+        }
+
         $post = $this->postService->store($data);
 
         return redirect(route('post.index'))->with('success', 'Post was Created!');
     }
+
 
     /**
      * Display the specified resource.
@@ -76,6 +85,14 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         $data = $request->validated();
+
+        if ($request->hasFile('image_file')) {
+            $imageName = $this->postService->setImage($request);
+
+            $data['image_storage_url'] = $imageName;
+
+            unset($data['image_file']);
+        }
 
         $this->postService->update($data, $post);
 

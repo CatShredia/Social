@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 
 class PostService
@@ -36,5 +37,16 @@ class PostService
         }
 
         return $post;
+    }
+
+    public function setImage(PostRequest $request): string
+    {
+        $image = $request->file('image_file');
+
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+
+        $image->storeAs('posts/images', $imageName, 'public');
+
+        return $imageName;
     }
 }
