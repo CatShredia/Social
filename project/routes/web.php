@@ -1,13 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\TagController as AdminTagController;
-use App\Http\Controllers\MainController;
-use App\Http\Controllers\PostController;
-use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index'])->name('index');
+
 Route::get('/test', [MainController::class, 'test'])->name('test');
 
 // posts
@@ -34,3 +36,16 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('/categories', [AdminCategoryController::class, 'index'])->name('admin.category');
     Route::get('/tags', [AdminTagController::class, 'index'])->name('admin.tag');
 });
+
+// dashboard
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__ . '/auth.php';
