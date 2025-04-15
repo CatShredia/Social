@@ -15,7 +15,6 @@
     <!-- Scripts -->
     @vite([
         'resources/css/app.css',
-        'resources/css/mytailwindcss.css',
         'resources/js/app.js',
         'resources/js/mytailwindcss.js'
     ])
