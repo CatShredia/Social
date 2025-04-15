@@ -3,7 +3,9 @@
         @if (Auth::user()->image_storage_url == null)
             {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
         @else
-            evrjnrevbh
+            <img src="{{ asset('storage/users/images/' . Auth::user()->image_storage_url) }}"
+                alt="{{ Auth::user()->title }}" class="img"
+                style="width: 100%; height: 100%; border-radius: 15px; padding: 0.1px; border: 1px solid rgb(35, 35, 35);">
         @endif
     </div>
     <span class="ml-2 text-gray-700">{{ Auth::user()->name }}</span>

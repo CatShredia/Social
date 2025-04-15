@@ -10,11 +10,11 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="{{ route('post.index') }}">Posts</a>
                 </div>
-                {{-- @can('view-admin-button', Auth::user()) --}}
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="{{ route('admin.index') }}">Admin</a>
-                </div>
-                {{-- @endcan --}}
+                @can('admin-access', Auth::user())
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="{{ route('admin.index') }}">Admin</a>
+                    </div>
+                @endcan
             </div>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="justify-content: end">
                 <div class="navbar-nav">

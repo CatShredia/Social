@@ -68,12 +68,12 @@
                     class="block py-2 pl-3 pr-4 text-base font-medium text-indigo-700 border-l-4 border-indigo-500 bg-indigo-50">
                     Posts
                 </a>
-                {{-- @can('view-admin-button', Auth::user()) --}}
-                <a href="{{ route('admin.index') }}"
-                    class="block py-2 pl-3 pr-4 text-base font-medium text-gray-600 border-l-4 border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300">
-                    Admin
-                </a>
-                {{-- @endcan --}}
+                @can('admin-access', Auth::user())
+                    <a href="{{ route('admin.index') }}"
+                        class="block py-2 pl-3 pr-4 text-base font-medium text-gray-600 border-l-4 border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300">
+                        Admin
+                    </a>
+                @endcan
             </div>
         </div>
     </nav>
