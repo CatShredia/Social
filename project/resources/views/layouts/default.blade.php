@@ -9,8 +9,12 @@
 
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    @vite([
+        'resources/css/app.css',
+        'resources/css/mytailwindcss.css',
+        'resources/js/app.js',
+        'resources/js/mytailwindcss.js'
+    ])
     @stack('styles')
 </head>
 
