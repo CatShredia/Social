@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,14 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
+        if ($request->hasFile('image_file')) {
+            $imageName = $this->setImage($request);
+
+            $request->user()->image_storage_url = $imageName;
+
+            unset($request['image_file']);
+        }
+
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
@@ -56,5 +65,16 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function setImage(ProfileUpdateRequest $request): string
+    {
+        $image = $request->file('image_file');
+
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+
+        $image->storeAs('users/images', $imageName, 'public');
+
+        return $imageName;
     }
 }

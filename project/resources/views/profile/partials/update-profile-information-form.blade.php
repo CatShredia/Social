@@ -13,9 +13,23 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <div class="text-center">
+        @if($user->image_storage_url)
+            <img src="{{ asset('storage/users/images/' . $user->image_storage_url) }}" alt="{{ $user->title }}"
+                class="mb-2 rounded img-fluid" style="max-height: 200px; width: auto;">
+        @else
+            <div class="mb-2"
+                style="height: 200px; display: flex; justify-content: center; align-items: center; background-color: #f0f0f0; color: #888;">
+                No Image
+            </div>
+        @endif
+    </div>
+
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
+
+        <x-images-form></x-images-form>
 
         <div>
             <x-input-label for="name" :value="__('Name')" />

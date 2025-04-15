@@ -20,6 +20,8 @@
         'resources/js/mytailwindcss.js'
     ])
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+
+    @stack('styles')
 </head>
 
 <body class="font-sans antialiased">
@@ -39,8 +41,17 @@
         <main>
             {{ $slot }}
         </main>
+
+        @if(session('clearLocalStorage'))
+            @push('scripts')
+                <script>
+                    localStorage.removeItem('imagePreview');
+                </script>
+            @endpush
+        @endif
     </div>
 
+    @stack('scripts')
 </body>
 
 </html>

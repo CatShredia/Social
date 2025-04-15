@@ -16,6 +16,7 @@ class ProfileUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'image_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp',
             'name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
@@ -25,6 +26,14 @@ class ProfileUpdateRequest extends FormRequest
                 'max:255',
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'image_file.image' => 'efpfejnoji',
+            'image_file.mimes' => 'Изображение должно быть в одном из следующих форматов: jpeg, png, jpg, gif, svg, webp.',
         ];
     }
 }
