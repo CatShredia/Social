@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin = User::factory(1)->create();
-        echo "Создано 1 админ" . "\n";
+        $admin = User::factory(3)->create();
+        echo "Создано 3 админа" . "\n";
 
         $categories = Category::factory(10)->create();
         echo "Создано 10 категорий" . "\n";

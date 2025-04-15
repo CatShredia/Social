@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +23,8 @@ class PostFactory extends Factory
             'content' => $this->faker->text(100),
             'likes' => random_int(1, 10000),
             'image_storage_url' => random_int(1, 3) . ".png",
-            'category_id' => Category::get()->random()->id
+            'category_id' => Category::get()->random()->id,
+            'user_id' => User::get()->random()->id,
         ];
     }
 }
