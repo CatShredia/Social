@@ -31,7 +31,8 @@ Route::group(['prefix' => 'post'], function () {
 });
 
 // admin
-Route::group(['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => [AdminAccess::class]], function () {
+// Route::group(['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => [AdminAccess::class]], function () {
+Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     // index
     Route::get('', [AdminIndexController::class, 'index'])->name('admin.index');
     Route::get('/categories', [AdminCategoryController::class, 'index'])->name('admin.category');

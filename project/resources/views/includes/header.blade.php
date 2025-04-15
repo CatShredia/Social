@@ -21,12 +21,12 @@
                         Posts
                     </a>
 
-                    {{-- @can('view-admin-button', Auth::user()) --}}
-                    <a href="{{ route('admin.index') }}"
-                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300">
-                        Admin
-                    </a>
-                    {{-- @endcan --}}
+                    @can('admin-access', Auth::user())
+                        <a href="{{ route('admin.index') }}"
+                            class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300">
+                            Admin
+                        </a>
+                    @endcan
                 </div>
             </div>
 
