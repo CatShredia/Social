@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Middleware\AdminAccess;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\TagController as AdminTagController;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
-use App\Http\Controllers\Admin\TagController as AdminTagController;
 
 Route::get('/', [MainController::class, 'index'])->name('index');
 
@@ -30,7 +31,7 @@ Route::group(['prefix' => 'post'], function () {
 });
 
 // admin
-Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => [AdminAccess::class]], function () {
     // index
     Route::get('', [AdminIndexController::class, 'index'])->name('admin.index');
     Route::get('/categories', [AdminCategoryController::class, 'index'])->name('admin.category');
