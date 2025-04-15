@@ -9,7 +9,7 @@
             <div class="text-center">
                 @if($post->image_storage_url)
                     <img src="{{ asset('storage/posts/images/' . $post->image_storage_url) }}" alt="{{ $post->title }}"
-                        class="img-fluid mb-2 rounded" style="max-height: 200px; width: auto;">
+                        class="mb-2 rounded img-fluid" style="max-height: 200px; width: auto;">
                 @else
                     <div class="mb-2"
                         style="height: 200px; display: flex; justify-content: center; align-items: center; background-color: #f0f0f0; color: #888;">
@@ -80,42 +80,11 @@
                     @enderror
                 </div>
 
-                <!-- Поле для загрузки изображения -->
-                <div class="mb-3">
-                    <label for="image_file" class="form-label">Изображение</label>
-                    <input type="file" class="form-control @error('image_file') is-invalid @enderror" id="image_file"
-                        name="image_file" onchange="previewImage(event)">
-                    @error('image_file')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                <x-images-form></x-images-form>
 
-                <!-- Место для предварительного просмотра изображения -->
-                <div class="mb-3" id="image-preview-container" style="display:none;">
-                    <img id="image-preview" src="" alt="Предпросмотр изображения" class="img-fluid">
-                </div>
-
-                <button type="submit" class="btn btn-primary mt-3">Сохранить изменения</button>
+                <button type="submit" class="mt-3 btn btn-primary">Сохранить изменения</button>
             </form>
         </div>
     </main>
     @include('includes.footer')
-
-    <script>
-        function previewImage(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-
-            reader.onload = function () {
-                const imagePreview = document.getElementById('image-preview');
-                const previewContainer = document.getElementById('image-preview-container');
-                imagePreview.src = reader.result;
-                previewContainer.style.display = 'block';  // Показываем контейнер с изображением
-            };
-
-            if (file) {
-                reader.readAsDataURL(file); // Читаем файл как URL
-            }
-        }
-    </script>
 @endsection

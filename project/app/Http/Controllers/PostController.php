@@ -56,7 +56,7 @@ class PostController extends Controller
 
         $post = $this->postService->store($data);
 
-        return redirect(route('post.index'))->with('success', 'Post was Created!');
+        return redirect(route('post.index'))->with('success', 'Post was Created!')->with('clearLocalStorage', true);;
     }
 
 
@@ -96,7 +96,7 @@ class PostController extends Controller
 
         $this->postService->update($data, $post);
 
-        return redirect(route('post.index'))->with('success', 'Post was Editing!');
+        return redirect(route('post.index'))->with('success', 'Post was Editing!')->with('clearLocalStorage', true);
     }
 
     /**

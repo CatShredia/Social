@@ -10,10 +10,22 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @stack('styles')
 </head>
 
 <body>
     @yield('content')
+
+    @if(session('clearLocalStorage'))
+        @push('scripts')
+            <script>
+                localStorage.removeItem('imagePreview');
+            </script>
+        @endpush
+    @endif
+
+    @stack('scripts')
 </body>
 
 </html>
