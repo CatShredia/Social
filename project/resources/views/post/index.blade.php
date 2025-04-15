@@ -26,8 +26,15 @@
                             @endif
                         </div>
 
-                        <h5 class="mb-2 text-xl font-medium text-gray-900">{{ $post->title }}</h5>
-                        <p class="mb-2 text-gray-700">{{ Str::limit($post->content, 150) }}</p>
+                        <h1 class="mb-1 text-3xl font-semibold text-gray-900">{{ $post->title }}</h1>
+                        <div class="mb-2 text-gray-700">
+                            Author:
+                            <a href="#" class="font-medium text-blue-600 hover:text-blue-800">
+                                {{ $post->user->name }}
+                            </a>
+                        </div>
+
+                        <p class="mb-4 text-gray-500">Date of Creating: {{ $post->created_at->format('d-m-Y H:i') }}</p>
 
                         <div class="mb-2 text-sm text-gray-500">
                             Лайков: {{ $post->likes }}
@@ -46,9 +53,7 @@
                             <p class="text-gray-500">Нет тегов</p>
                         @endif
 
-                        <div class="mt-2 text-sm text-gray-500">
-                            Дата создания: {{ $post->created_at->format('d-m-Y H:i') }}
-                        </div>
+                        <p class="mb-2 text-gray-700">{{ Str::limit($post->content, 150) }}</p>
 
                         <div class="flex justify-between mt-4">
                             <a href="{{ route('post.show', $post) }}"

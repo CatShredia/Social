@@ -6,8 +6,8 @@
             <div class="px-4 py-5 sm:p-6">
                 <div class="mb-4 text-center">
                     @if($post->image_storage_url)
-                        <img src="{{ asset('storage/posts/images/' . $post->image_storage_url) }}" alt="{{ $post->title }}"
-                            class="mx-auto mb-2 rounded-lg" style="max-height: 200px; width: auto;">
+                        <img src="" alt="{{ $post->title }}" class="mx-auto mb-2 rounded-lg"
+                            style="max-height: 200px; width: auto;">
                     @else
                         <div class="flex items-center justify-center h-48 mb-2 text-gray-500 bg-gray-100">
                             No Image
@@ -15,16 +15,23 @@
                     @endif
                 </div>
 
-                <h1 class="mb-2 text-3xl font-semibold text-gray-900">{{ $post->title }}</h1>
-                <p class="mb-4 text-gray-500">Дата создания: {{ $post->created_at->format('d-m-Y H:i') }}</p>
+                <h1 class="mb-1 text-3xl font-semibold text-gray-900">{{ $post->title }}</h1>
+                <div class="mb-2 text-gray-700">
+                    Author:
+                    <a href="#" class="font-medium text-blue-600 hover:text-blue-800">
+                        {{ $post->user->name }}
+                    </a>
+                </div>
+
+                <p class="mb-4 text-gray-500">Date of Creating: {{ $post->created_at->format('d-m-Y H:i') }}</p>
 
                 <div class="mb-4 text-gray-700">
                     {{ $post->content }}
                 </div>
 
-                <p class="mb-3 text-gray-700">Категория: {{ $post->category->name }}</p>
+                <p class="mb-3 text-gray-700">Category: {{ $post->category->name }}</p>
 
-                <p class="mb-4 text-gray-700"><strong>Лайков:</strong> {{ $post->likes }}</p>
+                <p class="mb-4 text-gray-700"><strong>Likes:</strong> {{ $post->likes }}</p>
 
                 <p class="mb-1 text-gray-700">Теги:</p>
                 @if($post->tags->isNotEmpty())
@@ -38,10 +45,14 @@
                 @endif
 
                 <div class="flex justify-between mt-6">
-                    <a href="{{ route('post.edit', $post->id) }}"
-                        class="px-4 py-2 font-bold text-white bg-yellow-500 rounded hover:bg-yellow-700">
-                        Редактировать пост
-                    </a>
+
+                    @can('post-own-access', $post)
+                        <a href="{{ route('post.edit', $post->id) }}"
+                            class="px-4 py-2 font-bold text-white bg-yellow-500 rounded hover:bg-yellow-700">
+                            Редактировать пост
+                        </a>
+                    @endcan
+
 
                     <a href="{{ route('post.index') }}"
                         class="px-4 py-2 font-bold text-white bg-gray-500 rounded hover:bg-gray-700">

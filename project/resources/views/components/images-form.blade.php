@@ -1,5 +1,5 @@
 <div class="mb-4">
-    <label for="image_file" class="block text-sm font-medium text-gray-700">Изображение</label>
+    <label for="image_file" class="block text-sm font-medium text-gray-700">Image</label>
     <input type="file"
         class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm file:border-0 file:bg-green-500 file:text-white file:rounded-md file:px-4 file:py-2 hover:file:bg-green-600 @error('image_file') border-red-500 @enderror"
         id="image_file" name="image_file" onchange="previewImage(event)">

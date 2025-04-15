@@ -2,6 +2,16 @@
 
 ## tasks
 
-1. need delete all bootstrap elements
-2. need to add a tailwindcss! Great and Freedom
-3. need to add pagination on pages
+need to add users
+need to add pagination on pages
+need to add localization
+
+---
+
+need to add email
+
+## Warnings
+
+### In deploying
+
+- need delete creating admins in **databaseseeder**
