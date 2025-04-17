@@ -9,7 +9,6 @@ export default defineConfig({
         laravel({
             input: [
                 "resources/sass/app.scss",
-                "resources/css/mytailwindcss.css",
                 "resources/css/adminlte.css",
                 "resources/js/app.js",
                 "resources/js/adminlte.js",

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AdminAccess;
+use App\Http\Middleware\PostOwnAccess;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
@@ -22,12 +23,14 @@ Route::group(['prefix' => 'post'], function () {
     Route::get('create', [PostController::class, 'create'])->name('post.create');
     Route::post('store', [PostController::class, 'store'])->name('post.store');
 
-    // show one
+    // show one (all can)
     Route::get('{post}', [PostController::class, 'show'])->name('post.show');
 
-    // editing
-    Route::get('{post}/edit', [PostController::class, 'edit'])->name('post.edit');
-    Route::put('{post}/updating', [PostController::class, 'update'])->name('post.update');
+    Route::group(['prefix' => '{post}', 'middleware' => [PostOwnAccess::class]], function () {
+        // editing
+        Route::get('edit', [PostController::class, 'edit'])->name('post.edit');
+        Route::put('updating', [PostController::class, 'update'])->name('post.update');
+    });
 });
 
 // admin

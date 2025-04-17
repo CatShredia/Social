@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostRequest;
-use App\Models\Category;
-use App\Models\Post;
 use App\Models\Tag;
-use App\Services\PostService;
+use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Services\PostService;
+use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -53,6 +54,7 @@ class PostController extends Controller
 
             unset($data['image_file']);
         }
+        $data['user_id'] = Auth::user()->id;
 
         $post = $this->postService->store($data);
 
